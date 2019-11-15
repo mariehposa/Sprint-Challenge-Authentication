@@ -24,7 +24,7 @@ router.post('/login', (req, res) => {
   // implement login
   let { username, password } = req.body;
   
-  db.getUsersBy({username})
+  db.getUserBy({username})
     .then(users => {
       if(users && bcrypt.compareSync(password, users.password)) {
         const token = generateToken(users)
@@ -52,7 +52,7 @@ function generateToken(user) {
   }
 
   const options = {
-    expiresIn: '1 day'
+    expiresIn: '1d'
   }
 
   const result = jwt.sign(

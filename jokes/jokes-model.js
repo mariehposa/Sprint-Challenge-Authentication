@@ -1,9 +1,9 @@
 const db = require('../database/dbConfig')
 
-function getUsers() {
-    return db('users')
-    .select('username')
-}
+// function getUsers() {
+//     return db('users')
+//     .select('username')
+// }
 
 function getUserId(id) {
     return db('users as u')
@@ -15,7 +15,6 @@ function getUserId(id) {
 function getUserBy(value) {
     return db('users as u')
     .where(value)
-    .select('u.username')
     .first()
 }
 
@@ -26,7 +25,7 @@ function addUser(user) {
 }
 
 module.exports = {
-    getUsers,
+    // getUsers,
     getUserId,
     getUserBy,
     addUser
