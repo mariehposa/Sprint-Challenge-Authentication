@@ -16,9 +16,16 @@ describe('server', () => {
                 }
                 const response = await request(server).post('/api/auth/register').send(user)
                 expect(response.status).toBe(201)
-            })
 
-            // test('should return')            
+            })
+            test('should return the exact username', async () => {
+                const user = {
+                    username: "test",
+                    password: "test"
+                }
+                const response = await request(server).post('/api/auth/register').send(user)
+                expect(response.body.username).toBe(user.username)
+            })       
         })
 
         describe('[POST] / api/auth', () => {
