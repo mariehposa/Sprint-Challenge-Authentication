@@ -38,6 +38,15 @@ describe('server', () => {
                 const reply = await request(server).post('/api/auth/login').send(user)
                 expect(reply.status).toBe(200)
             })
+            test('should return token', async () => {
+                const user = {
+                    username: "test",
+                    password: "test"
+                }
+                await request(server).post('/api/auth/register').send(user)
+                const reply = await request(server).post('/api/auth/login').send(user)
+                expect(reply.body.token).not.toBe(undefined)
+            })
         })
     })
 })
