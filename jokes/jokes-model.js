@@ -9,6 +9,25 @@ function getUserId(id) {
     return db('users as u')
     .where('u.id', id)
     .select('u.username')
+    .first()
 }
 
-function
+function getUserBy(user) {
+    return db('users as u')
+    .where(user)
+    .select('u.username')
+    .first()
+}
+
+function addUser(user) {
+    return db('users as u')
+    .insert(user)
+    .then(([id]) => this.getUserId(id))
+}
+
+module.exports = {
+    getUsers,
+    getUserId,
+    getUserBy,
+    addUser
+}
