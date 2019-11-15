@@ -12,9 +12,9 @@ function getUserId(id) {
     .first()
 }
 
-function getUserBy(user) {
+function getUserBy(value) {
     return db('users as u')
-    .where(user)
+    .where(value)
     .select('u.username')
     .first()
 }
